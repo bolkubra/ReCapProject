@@ -22,5 +22,10 @@ namespace Business.Concrete
             //iş kodları
             return _carDal.GetAll();
         }
+
+        public IEnumerable<object> GetAllByCarID(int v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

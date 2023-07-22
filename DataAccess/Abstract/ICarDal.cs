@@ -1,18 +1,19 @@
-﻿using Entities.Concrete;
+﻿using DataAccess.Abstract;
+using Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace DataAccess.Abtract
 {
-    public interface ICarDal
+    public interface ICarDal : IEntityRepository<Car>
     {
-        List<Car> GetAll();
-        void Add(Car car);
-        void Update(Car car);
-        void Delete(Car car);
+        //List<Car> GetAll();
+        //void Add(Car car);
+        //void Update(Car car);
+        //void Delete(Car car);
 
-        List<Car> GetAllByColor(int ColorId);
+        //List<Car> GetAllByColor(int ColorId);
 
 
     }
