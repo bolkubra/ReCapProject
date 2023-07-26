@@ -27,5 +27,10 @@ namespace Business.Concrete
         {
             throw new NotImplementedException();
         }
+
+        public IEnumerable<object> GetAllByCarId(int v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

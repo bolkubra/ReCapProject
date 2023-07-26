@@ -24,17 +24,20 @@ namespace DataAccess.Concrete.EntityFremework
         {
             using (ReCapProjectContext context = new ReCapProjectContext())
             {
-                return context.Set<Car>()
+                return context.Set<Color>()
                     .SingleOrDefault(filter);
             }
         }
 
         public List<Color> GetAll(Expression<Func<Color, bool>> filter = null)
         {
-            throw new NotImplementedException();
+            using (ReCapProjectContext context = new ReCapProjectContext())
+            {
+                return filter == null ? context.Set<Color>().ToList() : context.Set<Color>().Where(filter).ToList();
+            }
         }
 
-        public List<Color> GetById(int id)
+        public Color GetById(int id)
         {
             throw new NotImplementedException();
         }

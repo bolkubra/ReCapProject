@@ -2,6 +2,7 @@
 using Entities.Concrete;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 
@@ -21,10 +22,22 @@ namespace DataAccess.Concrete.EntityFremework
 
         public Brand Get(Expression<Func<Brand, bool>> filter)
         {
-            throw new NotImplementedException();
+            using (ReCapProjectContext context = new ReCapProjectContext())
+            {
+                return context.Set<Brand>()
+                    .SingleOrDefault(filter);
+            }
         }
 
         public List<Brand> GetAll(Expression<Func<Brand, bool>> filter = null)
+        {
+            using (ReCapProjectContext context = new ReCapProjectContext())
+            {
+                return filter == null ? context.Set<Brand>().ToList() : context.Set<Brand>().Where(filter).ToList();
+            }
+        }
+
+        public Brand GetById(int id)
         {
             throw new NotImplementedException();
         }
