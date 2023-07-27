@@ -54,8 +54,8 @@ namespace Core.DataAccess.EntityFramework
         //{
         //    using (TContext context = new TContext())
         //    {
-                
-        //        //return context.Cars.SingleOrDefault(p => p.Id == id);
+
+        //        return context.cars.SingleOrDefault(c => c.Id == id);
         //    }
         //}
 

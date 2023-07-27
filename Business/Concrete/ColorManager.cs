@@ -1,35 +1,35 @@
 ﻿using Business.Abstract;
-using Entities.Concrete;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq.Expressions;
 using System.Text;
 
 namespace Business.Concrete
 {
-    public class CarManager : ICarService
+    public class ColorManager : IColorService
     {
-        public void Add(Car car)
+        public void Add(Color car)
         {
             throw new NotImplementedException();
         }
 
-        public void Delete(Car car)
+        public void Delete(Color car)
         {
             throw new NotImplementedException();
         }
 
-        public List<Car> GetAll(Expression<Func<Car, bool>> filter = null)
+        public List<Color> GetAll(Expression<Func<Color, bool>> filter = null)
         {
             throw new NotImplementedException();
         }
 
-        public Car GetById(int id)
+        public Color GetById(int id)
         {
             throw new NotImplementedException();
         }
 
-        public void Update(Car car)
+        public void Update(Color car)
         {
             throw new NotImplementedException();
         }
