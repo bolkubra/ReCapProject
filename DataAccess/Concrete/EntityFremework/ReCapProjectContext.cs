@@ -6,7 +6,7 @@ using System.Text;
 
 namespace DataAccess.Concrete.EntityFremework
 {
-    internal class ReCapProjectContext : DbContext
+    public class ReCapProjectContext : DbContext
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
