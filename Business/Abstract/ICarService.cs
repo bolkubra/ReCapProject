@@ -1,4 +1,5 @@
 ﻿using Entities.Concrete;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
@@ -13,6 +14,8 @@ namespace Business.Abstract
         void Update(Car car);
         Car GetById(int id);
         List<Car> GetAll(Expression<Func<Car, bool>> filter = null);
+
+        List<CarDetailDto> GetCarDetails();
         //List<CarDetailDto> GetCarDetails();
     }
 }

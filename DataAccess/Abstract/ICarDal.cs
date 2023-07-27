@@ -1,6 +1,7 @@
 ﻿using Core.DataAccess;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -16,6 +17,6 @@ namespace DataAccess.Abtract
 
         //List<Car> GetAllByColor(int ColorId);
 
-
+        List<CarDetailDto> GetCarDetails();
     }
 }
