@@ -19,6 +19,8 @@ namespace ConsoleUI
 
 
             CarManager carManager = new CarManager(new EfCarDal());
+            UserManager userManager = new UserManager(new EfUserDal());
+           
             var result = carManager.GetCarDetails();
             if(result.Success==true)
             {
@@ -32,7 +34,22 @@ namespace ConsoleUI
                 Console.WriteLine(result.Message);
             }
 
-
         }
+
+
+        private static UserManager AddUser(UserManager userManager)
+        {
+            userManager.Add(new User
+            {
+                FirstName = "Max",
+                LastName = "Mustermann",
+                Email = "max@test.de",
+                Password = "123456",
+               
+            });
+            return userManager;
+        }
+
+
     }
 }
