@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Core.Utilities.Results;
 using DataAccess.Abtract;
 using Entities.Concrete;
 using Entities.DTOs;
@@ -15,6 +16,7 @@ namespace Business.Concrete
 
         public CarManager()
         {
+
         }
 
         public CarManager(ICarDal carDal)
@@ -22,32 +24,32 @@ namespace Business.Concrete
             _carDal = carDal;
         }
 
-        public void Add(Car car)
+        public IResult Add(Car car)
         {
             throw new NotImplementedException();
         }
 
-        public void Delete(Car car)
+        public IResult Delete(Car car)
         {
             throw new NotImplementedException();
         }
 
-        public List<Car> GetAll(Expression<Func<Car, bool>> filter = null)
+        public IDataResult <List<Car>> GetAll(Expression<Func<Car, bool>> filter = null)
         {
             throw new NotImplementedException();
         }
 
-        public Car GetById(int id)
+        public IDataResult <Car> GetById(int id)
         {
             throw new NotImplementedException();
         }
 
-        public List<CarDetailDto> GetCarDetails()
+        public IDataResult<List<CarDetailDto>> GetCarDetails()
         {
-           return _carDal.GetCarDetails();
+           return new SuccessDataResult<List<CarDetailDto>>( _carDal.GetCarDetails());
         }
 
-        public void Update(Car car)
+        public IResult Update(Car car)
         {
             throw new NotImplementedException();
         }

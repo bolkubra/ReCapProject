@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Core.Utilities.Results;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -9,27 +10,27 @@ namespace Business.Concrete
 {
     public class ColorManager : IColorService
     {
-        public void Add(Color car)
+        public IResult Add(Color car)
         {
             throw new NotImplementedException();
         }
 
-        public void Delete(Color car)
+        public IResult Delete(Color car)
         {
             throw new NotImplementedException();
         }
 
-        public List<Color> GetAll(Expression<Func<Color, bool>> filter = null)
+        public IDataResult<List<Color>> GetAll(Expression<Func<Color, bool>> filter = null)
         {
             throw new NotImplementedException();
         }
 
-        public Color GetById(int id)
+        public IDataResult<Color> GetById(int id)
         {
             throw new NotImplementedException();
         }
 
-        public void Update(Color car)
+        public IResult Update(Color car)
         {
             throw new NotImplementedException();
         }

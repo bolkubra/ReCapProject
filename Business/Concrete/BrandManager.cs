@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Core.Utilities.Results;
 using Entities.Concrete;
 using System;
 using System.Collections.Generic;
@@ -9,27 +10,27 @@ namespace Business.Concrete
 {
     public class BrandManager : IBrandService
     {
-        public void Add(Brand brand)
+        public IResult Add(Brand brand)
         {
             throw new NotImplementedException();
         }
 
-        public void Delete(Brand brand)
+        public IResult Delete(Brand brand)
         {
             throw new NotImplementedException();
         }
 
-        public List<Brand> GetAll(Expression<Func<Brand, bool>> filter = null)
+        public IDataResult< List<Brand>> GetAll(Expression<Func<Brand, bool>> filter = null)
         {
             throw new NotImplementedException();
         }
 
-        public Brand GetById(int id)
+        public IDataResult<Brand> GetById(int id)
         {
             throw new NotImplementedException();
         }
 
-        public void Update(Brand brand)
+        public IResult Update(Brand brand)
         {
             throw new NotImplementedException();
         }
