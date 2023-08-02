@@ -10,17 +10,12 @@ namespace Business.Concrete
 {
     public class CustomerManager : ICustomerService
     {
-        public IResult Add(Customer customer)
+        public IResult Delete(Customer entity)
         {
             throw new NotImplementedException();
         }
 
-        public IResult Delete(Customer custmer)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IDataResult<List<Customer>> GetAll(Expression<Func<Customer, bool>> filter = null)
+        public IDataResult<List<Customer>> GetAll()
         {
             throw new NotImplementedException();
         }
@@ -30,7 +25,12 @@ namespace Business.Concrete
             throw new NotImplementedException();
         }
 
-        public IResult Update(Customer customer)
+        public IResult Insert(Customer entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IResult Update(Customer entity)
         {
             throw new NotImplementedException();
         }

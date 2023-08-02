@@ -12,13 +12,22 @@ namespace WebAPI.Controllers
     [ApiController]
     public class CarsController : ControllerBase
     {
-        [HttpGet]
-        public List<Car> Get()
-        {
-            ICarService carService = new CarManager (new EfCarDal());
-            var result = carService.GetAll();
-            return result.Data;
+        ICarService _carService;
 
+        public CarsController(ICarService carService)
+        {
+            _carService = carService;
+        }
+        [HttpGet("getall")]
+        public IActionResult GetAll()
+        {
+
+            var result = _carService.GetAll();
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
         }
     }
 }

@@ -11,23 +11,12 @@ namespace Business.Concrete
 {
     public class UserManager : IUserService
     {
-        private IUserDal _userDal;
-
-        public UserManager(IUserDal userDal)
-        {
-            _userDal = userDal;
-        }
-        public IResult Add(User user)
+        public IResult Delete(User entity)
         {
             throw new NotImplementedException();
         }
 
-        public IResult Delete(User user)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IDataResult<List<User>> GetAll(Expression<Func<User, bool>> filter = null)
+        public IDataResult<List<User>> GetAll()
         {
             throw new NotImplementedException();
         }
@@ -37,7 +26,12 @@ namespace Business.Concrete
             throw new NotImplementedException();
         }
 
-        public IResult Update(User user)
+        public IResult Insert(User entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IResult Update(User entity)
         {
             throw new NotImplementedException();
         }

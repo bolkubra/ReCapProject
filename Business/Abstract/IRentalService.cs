@@ -2,13 +2,12 @@
 using Entities.Concrete;
 using System;
 using System.Collections.Generic;
-using System.Linq.Expressions;
 using System.Text;
 
 namespace Business.Abstract
 {
-    public interface IUserService : IEntityService<User>
+    public interface IRentalService :IEntityService<Rental>
     {
-        
+        public IResult IsSuitableToRent(Rental entity);
     }
 }

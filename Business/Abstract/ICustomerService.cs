@@ -7,12 +7,8 @@ using System.Text;
 
 namespace Business.Abstract
 {
-    public interface ICustomerService
+    public interface ICustomerService : IEntityService<Customer>
     {
-        IResult Add(Customer customer);
-        IResult Delete(Customer custmer);
-        IResult Update(Customer customer);
-        IDataResult<Customer> GetById(int id);
-        IDataResult<List<Customer>> GetAll(Expression<Func<Customer, bool>> filter = null);
+        
     }
 }

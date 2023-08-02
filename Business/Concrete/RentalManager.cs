@@ -1,39 +1,40 @@
 ﻿using Business.Abstract;
 using Core.Utilities.Results;
-using DataAccess.Abstract;
-using DataAccess.Concrete.EntityFremework;
 using Entities.Concrete;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Business.Concrete
 {
-    public class ColorManager : IColorService
+    public class RentalManager : IRentalService
     {
-        public IResult Delete(Color color)
+        public IResult Delete(Rental entity)
         {
             throw new NotImplementedException();
         }
 
-        public IDataResult<List<Color>> GetAll()
+        public IDataResult<List<Rental>> GetAll()
         {
             throw new NotImplementedException();
         }
 
-        public IDataResult<Color> GetById(int id)
+        public IDataResult<Rental> GetById(int id)
         {
             throw new NotImplementedException();
         }
 
-        public IResult Insert(Color color)
+        public IResult Insert(Rental entity)
         {
             throw new NotImplementedException();
         }
 
-        public IResult Update(Color color)
+        public IResult IsSuitableToRent(Rental entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IResult Update(Rental entity)
         {
             throw new NotImplementedException();
         }

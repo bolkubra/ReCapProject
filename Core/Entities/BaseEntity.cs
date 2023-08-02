@@ -6,8 +6,7 @@ namespace Core.Entities
 {
     public abstract class BaseEntity
     {
-        public int Id { get; set; }
-        
+        //public int Id { get; set; }
         //public virtual DateTime CreatedDate { get; set; } = DateTime.Now;
         //public virtual DateTime ModifiedDate { get; set; } = DateTime.Now;
         //public virtual bool IsDeleted { get; set; } = false;

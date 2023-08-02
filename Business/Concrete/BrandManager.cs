@@ -1,5 +1,7 @@
 ﻿using Business.Abstract;
+using Core.Entities;
 using Core.Utilities.Results;
+using DataAccess.Abstract;
 using Entities.Concrete;
 using System;
 using System.Collections.Generic;
@@ -10,29 +12,39 @@ namespace Business.Concrete
 {
     public class BrandManager : IBrandService
     {
-        public IResult Add(Brand brand)
+        IBrandDal _brandDal;
+
+        public BrandManager(IBrandDal brandDal)
         {
-            throw new NotImplementedException();
+            this._brandDal = brandDal;
         }
 
-        public IResult Delete(Brand brand)
+        public IResult Delete(Brand entity)
         {
-            throw new NotImplementedException();
+            _brandDal.Delete(entity);
+            return new SuccessResult("Brand deleted!");
         }
 
-        public IDataResult< List<Brand>> GetAll(Expression<Func<Brand, bool>> filter = null)
+        public IDataResult<List<Brand>> GetAll()
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<List<Brand>>(_brandDal.GetAll(), "Brands Listed");
         }
 
         public IDataResult<Brand> GetById(int id)
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<Brand>(_brandDal.Get(b => b.BrandId == id), "Brand brandId:" + id + " is provided!");
         }
 
-        public IResult Update(Brand brand)
+        public IResult Insert(Brand entity)
         {
-            throw new NotImplementedException();
+            _brandDal.Add(entity);
+            return new SuccessResult("Brand deleted!");
+        }
+
+        public IResult Update(Brand entity)
+        {
+            _brandDal.Update(entity);
+            return new SuccessResult("Brand deleted!");
         }
     }
 }

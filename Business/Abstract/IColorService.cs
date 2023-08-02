@@ -1,18 +1,13 @@
-﻿using Core.Utilities.Results;
+﻿using Entities.Concrete;
 using System;
 using System.Collections.Generic;
-using System.Drawing;
-using System.Linq.Expressions;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Business.Abstract
 {
-    public interface IColorService
+    public interface IColorService : IEntityService<Color>
     {
-        IResult Add(Color car);
-        IResult Delete(Color car);
-        IResult Update(Color car);
-        IDataResult <Color >GetById(int id);
-        IDataResult <List<Color>> GetAll(Expression<Func<Color, bool>> filter = null);
     }
 }
