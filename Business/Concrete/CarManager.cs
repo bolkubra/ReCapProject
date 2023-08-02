@@ -36,7 +36,14 @@ namespace Business.Concrete
 
         public IDataResult <List<Car>> GetAll(Expression<Func<Car, bool>> filter = null)
         {
-            throw new NotImplementedException();
+            //if (DateTime.Now.Hour == 7)
+            //{
+            //    return new ErrorDataResult<List<Car>>("System is in maintenance!");
+
+            //}
+
+
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll(), "Cars listed!");
         }
 
         public IDataResult <Car> GetById(int id)
