@@ -1,3 +1,4 @@
+using Autofac.Core;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -18,6 +19,7 @@ namespace WebAPI
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+         
         }
 
         public IConfiguration Configuration { get; }

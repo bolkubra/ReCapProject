@@ -1,8 +1,11 @@
 ﻿using Business.Abstract;
+using Business.Constanst;
+using Business.ValidationRules.FluentValidation;
 using Core.Utilities.Results;
 using DataAccess.Abtract;
 using Entities.Concrete;
 using Entities.DTOs;
+using FluentValidation;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
@@ -17,6 +20,24 @@ namespace Business.Concrete
         public CarManager(ICarDal carDal)
         {
             _carDal = carDal;
+        }
+        public IResult Add(Car car)
+        {
+            //business kod
+            //validation - doğrulama kod
+            //if (car.CarName.Length < 2) // min 2 karakter
+            //{
+            //    return new ErrorResult(Messages.CarNameInvalid);
+            //}
+            var context = new ValidationContext<Car>(car);
+            CarValidator carvalidation = new CarValidator();
+            var result = carvalidation.Validate(context);
+            if (!result.IsValid)
+            {
+                throw new ValidationException(result.Errors);
+            }
+            _carDal.Add(car);
+            return new SuccessResult(Messages.ProductAdded);
         }
 
         public IResult Delete(Car car)

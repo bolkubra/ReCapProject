@@ -1,10 +1,30 @@
-﻿using System;
+﻿using Autofac;
+using Autofac.Extras.DynamicProxy;
+using Business.Abstract;
+using Business.Concrete;
+using Castle.DynamicProxy;
+using DataAccess.Abtract;
+using DataAccess.Concrete.EntityFremework;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Business.DependencyResolvers.Autofac
 {
-    internal class AutofacBusinessModule
+    public class AutofacBusinessModule : Module
     {
+        protected override void Load(ContainerBuilder builder)
+        {
+            builder.RegisterType<CarManager>().As<ICarService>().SingleInstance();
+            builder.RegisterType<EfCarDal>().As<ICarDal>().SingleInstance();
+
+            //var assembly = System.Reflection.Assembly.GetExecutingAssembly();
+
+            //builder.RegisterAssemblyTypes(assembly).AsImplementedInterfaces()
+            //    .EnableInterfaceInterceptors(new ProxyGenerationOptions()
+            //    {
+            //        Selector = new AspectInterceptorSelector()
+            //    }).SingleInstance();
+        }
     }
 }
