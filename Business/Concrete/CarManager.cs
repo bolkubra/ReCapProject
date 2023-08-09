@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using Business.Constanst;
 using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofact.Validation;
 using Core.CrossCuttingConcerns.Validation;
 using Core.Utilities.Results;
 using DataAccess.Abtract;
@@ -22,6 +23,7 @@ namespace Business.Concrete
         {
             _carDal = carDal;
         }
+        [ValidationAspect(typeof(CarValidator))]
         public IResult Add(Car car)
         {
             //business kod
@@ -30,7 +32,7 @@ namespace Business.Concrete
             //{
             //    return new ErrorResult(Messages.CarNameInvalid);
             //}
-            ValidationTool.Validate(new CarValidator(), car);
+            //ValidationTool.Validate(new CarValidator(), car);
             _carDal.Add(car);
             return new SuccessResult(Messages.ProductAdded);
         }
