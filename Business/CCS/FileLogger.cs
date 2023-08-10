@@ -4,7 +4,13 @@ using System.Text;
 
 namespace Business.CCS
 {
-    internal class FileLogger
+    public class FileLogger : ILogger
     {
+ 
+        public void log()
+        {
+                Console.WriteLine("Dosyaya Loglandı");
+            
+        }
     }
 }

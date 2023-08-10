@@ -48,6 +48,7 @@ namespace WebAPI
             {
                 endpoints.MapControllers();
             });
+            app.UseStaticFiles();
         }
     }
 }
