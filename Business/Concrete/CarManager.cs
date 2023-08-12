@@ -3,6 +3,7 @@ using Business.Constanst;
 using Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofact.Validation;
 using Core.CrossCuttingConcerns.Validation;
+using Core.Utilities.Businness;
 using Core.Utilities.Results;
 using DataAccess.Abtract;
 using Entities.Concrete;
@@ -33,6 +34,7 @@ namespace Business.Concrete
             //    return new ErrorResult(Messages.CarNameInvalid);
             //}
             //ValidationTool.Validate(new CarValidator(), car);
+            
             _carDal.Add(car);
             return new SuccessResult(Messages.ProductAdded);
         }
