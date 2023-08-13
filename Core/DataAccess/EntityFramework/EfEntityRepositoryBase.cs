@@ -42,16 +42,25 @@ namespace Core.DataAccess.EntityFramework
             }
         }
 
+        //public List<TEntity> GetAll(Expression<Func<TEntity, bool>> filter = null)
+        //{
+        //    using (TContext context = new TContext())
+        //    {
+
+        //        return filter == null ? context.Set<TEntity>().ToList() :
+        //            context.Set<TEntity>().Where(filter).ToList();
+
+        //    }
+
+        //}
         public List<TEntity> GetAll(Expression<Func<TEntity, bool>> filter = null)
         {
             using (TContext context = new TContext())
             {
-
-                return filter == null ? context.Set<TEntity>().ToList() :
-                    context.Set<TEntity>().Where(filter).ToList();
-
+                return filter == null
+                    ? context.Set<TEntity>().ToList()
+                    : context.Set<TEntity>().Where(filter).ToList();
             }
-
         }
 
         //public TEntity GetById(int id)
