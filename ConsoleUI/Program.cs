@@ -1,7 +1,7 @@
 ﻿using Business.Concrete;
 using DataAccess.Abtract;
 using DataAccess.Concrete.EntityFremework;
-using DataAccess.Concrete.InMemory;
+
 using Entities.Concrete;
 using System;
 

@@ -8,7 +8,7 @@ namespace Core.Utilities.Results
     {
         public DataResult(T data, bool succes, string message ) : base (succes,message)
         {
-                
+            Data = data;
         }
         public DataResult(T data, bool succes) : base(succes)
         {

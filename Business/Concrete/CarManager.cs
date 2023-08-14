@@ -46,11 +46,11 @@ namespace Business.Concrete
 
         public IDataResult<List<Car>> GetAll()
         {
-            if (DateTime.Now.Hour == 7)
-            {
-                return new ErrorDataResult<List<Car>>("System is in maintenance!");
+            //if (DateTime.Now.Hour == 7)
+            //{
+            //    return new ErrorDataResult<List<Car>>("System is in maintenance!");
 
-            }
+            //}
 
 
             return new SuccessDataResult<List<Car>>(_carDal.GetAll(), "Cars listed!");
