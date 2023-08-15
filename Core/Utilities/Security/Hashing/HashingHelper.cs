@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Core.Utilities.Security.Hashing
 {
-    internal class HashingHelper
+    public class HashingHelper
     {
         public static void CreatePasswordHacsh(string password, out byte[] passwordHash, out byte[] passwordSalt)//verilan passwordun hashini oluşturuyor
         {
