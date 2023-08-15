@@ -4,7 +4,11 @@ using System.Text;
 
 namespace Core.Utilities.Security.JWT
 {
-    internal class TokenOptions
+    public class TokenOptions
     {
+        public string Audience { get; set; }
+        public string Issuer { get; set; }
+        public int AccessTokenExpiration { get; set; }
+        public string SecurityKey { get; set; }
     }
 }

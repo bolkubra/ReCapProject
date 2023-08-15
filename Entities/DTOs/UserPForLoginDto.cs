@@ -1,10 +1,13 @@
-﻿using System;
+﻿using Core.Entities;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Entities.DTOs
 {
-    internal class UserPForLoginDto
+    public class UserPForLoginDto : IDto
     {
+        public string Email { get; set; }
+        public string Password { get; set; }
     }
 }
