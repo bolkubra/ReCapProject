@@ -11,19 +11,19 @@ namespace Business.Concrete
     {
         IUserPDal _userPDal;
 
-        public UserPManager(IUserPDal userDal)
+        public UserPManager(IUserPDal userPDal)
         {
-            _userPDal = userDal;
+            _userPDal = userPDal;
         }
 
-        public List<OperationClaim> GetClaims(UserP user)
+        public List<OperationClaim> GetClaims(UserP userp)
         {
-            return _userPDal.GetClaims(user);
+            return _userPDal.GetClaims(userp);
         }
 
-        public void Add(UserP user)
+        public void Add(UserP userp)
         {
-            _userPDal.Add(user);
+            _userPDal.Add(userp);
         }
 
         public UserP GetByMail(string email)
