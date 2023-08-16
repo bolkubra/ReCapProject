@@ -14,20 +14,20 @@ namespace Business.Concrete
 {
     public class AuthManager : IAuthService
     {
-        private IUserPService _userPService;
+        private IUserService _userPService;
         private ITokenHelper _tokenHelper;
 
-        public AuthManager(IUserPService userPService, ITokenHelper tokenHelper)
+        public AuthManager(IUserService userPService, ITokenHelper tokenHelper)
         {
             _userPService = userPService;
             _tokenHelper = tokenHelper;
         }
 
-        public IDataResult<UserP> Register(UserPForRegisterDto userForRegisterDto, string password)
+        public IDataResult<User> Register(UserPForRegisterDto userForRegisterDto, string password)
         {
             byte[] passwordHash, passwordSalt;
             HashingHelper.CreatePasswordHacsh(password, out passwordHash, out passwordSalt);
-            var user = new UserP
+            var user = new User
             {
                 Email = userForRegisterDto.Email,
                 FirstName = userForRegisterDto.FirstName,
@@ -37,23 +37,23 @@ namespace Business.Concrete
                 Status = true
             };
             _userPService.Add(user);
-            return new SuccessDataResult<UserP>(user, "kayıt oldu");
+            return new SuccessDataResult<User>(user, "kayıt oldu");
         }
 
-        public IDataResult<UserP> Login(UserPForLoginDto userForLoginDto)
+        public IDataResult<User> Login(UserPForLoginDto userForLoginDto)
         {
             var userToCheck = _userPService.GetByMail(userForLoginDto.Email);
             if (userToCheck == null)
             {
-                return new ErrorDataResult<UserP>("kullanıcı bulunamadı");
+                return new ErrorDataResult<User>("kullanıcı bulunamadı");
             }
 
             if (!HashingHelper.VerifyPasswordHach(userForLoginDto.Password, userToCheck.PasswordHach, userToCheck.PasswordSalt))
             {
-                return new ErrorDataResult<UserP>("parola hatası");
+                return new ErrorDataResult<User>("parola hatası");
             }
 
-            return new SuccessDataResult<UserP>(userToCheck, "başarılı giriş ");
+            return new SuccessDataResult<User>(userToCheck, "başarılı giriş ");
         }
 
         public IResult UserExists(string email)
@@ -65,7 +65,7 @@ namespace Business.Concrete
             return new SuccessResult();
         }
 
-        public IDataResult<AccessToken> CreateAccessToken(UserP user)
+        public IDataResult<AccessToken> CreateAccessToken(User user)
         {
             var claims = _userPService.GetClaims(user);
             var accessToken = _tokenHelper.CreateToken(user, claims);

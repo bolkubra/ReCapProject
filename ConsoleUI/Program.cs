@@ -11,7 +11,7 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("\nCars\n\n");
+            Console.WriteLine("\nCars\n");
             EfCarDal efCarDal = new EfCarDal();
             CarManager carManager = new CarManager(efCarDal);
 
@@ -23,7 +23,7 @@ namespace ConsoleUI
             }
 
 
-            Console.WriteLine("\nCar Details\n\n");
+            Console.WriteLine("\nCar Details\n");
             foreach (var item in carManager.GetCarDetails().Data)
             {
                 Console.WriteLine(item);

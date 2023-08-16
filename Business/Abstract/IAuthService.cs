@@ -11,9 +11,9 @@ namespace Business.Abstract
 {
     public interface IAuthService
     {
-        IDataResult<UserP> Register(UserPForRegisterDto userForRegisterDto, string password); // kullanıcı kayıtta olabilmeli
-        IDataResult<UserP> Login(UserPForLoginDto userForLoginDto); // kullanıcı loginde olabilmeli
+        IDataResult<User> Register(UserPForRegisterDto userForRegisterDto, string password); // kullanıcı kayıtta olabilmeli
+        IDataResult<User> Login(UserPForLoginDto userForLoginDto); // kullanıcı loginde olabilmeli
         IResult UserExists(string email);
-        IDataResult<AccessToken> CreateAccessToken(UserP user);
+        IDataResult<AccessToken> CreateAccessToken(User user);
     }
 }

@@ -7,26 +7,26 @@ using System.Text;
 
 namespace Business.Concrete
 {
-    public class UserPManager : IUserPService
+    public class UserPManager : IUserService
     {
-        IUserPDal _userPDal;
+        IUserDal _userPDal;
 
-        public UserPManager(IUserPDal userPDal)
+        public UserPManager(IUserDal userPDal)
         {
             _userPDal = userPDal;
         }
 
-        public List<OperationClaim> GetClaims(UserP userp)
+        public List<OperationClaim> GetClaims(User userp)
         {
             return _userPDal.GetClaims(userp);
         }
 
-        public void Add(UserP userp)
+        public void Add(User userp)
         {
             _userPDal.Add(userp);
         }
 
-        public UserP GetByMail(string email)
+        public User GetByMail(string email)
         {
             return _userPDal.Get(u => u.Email == email);
         }
