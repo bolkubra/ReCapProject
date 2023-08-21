@@ -7,6 +7,7 @@ using Core.Utilities.Interceptors;
 using Core.Utilities.Security.JWT;
 using DataAccess.Abstract;
 using DataAccess.Abtract;
+using DataAccess.Concrete.EntityFramework;
 using DataAccess.Concrete.EntityFremework;
 using System;
 using System.Collections.Generic;

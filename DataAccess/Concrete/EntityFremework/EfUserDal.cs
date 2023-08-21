@@ -1,12 +1,14 @@
-﻿using Core.DataAccess.EntityFramework;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using Core.DataAccess.EntityFramework;
 using Core.Entities.Concrete;
 using DataAccess.Abstract;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Linq;
+using DataAccess.Concrete.EntityFremework;
+using Entities.Concrete;
 
-namespace DataAccess.Concrete.EntityFremework
+namespace DataAccess.Concrete.EntityFramework
 {
     public class EfUserDal : EfEntityRepositoryBase<User, ReCapProjectContext>, IUserDal
     {
