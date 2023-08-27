@@ -27,7 +27,7 @@ namespace Business.Concrete
         }
         [SecuredOperation("car.add,admin")] // yetki kontorlü
         [ValidationAspect(typeof(CarValidator))]
-        public IResult Add(Car car)
+        public IResult İnsert(Car car)
         {
             //business kod
             //validation - doğrulama kod
