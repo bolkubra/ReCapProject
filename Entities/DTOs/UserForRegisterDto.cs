@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Entities.DTOs
 {
-    public class UserPForRegisterDto : IDto
+    public class UserForRegisterDto : IDto
     {
         public string Email { get; set; }
         public string Password { get; set; }

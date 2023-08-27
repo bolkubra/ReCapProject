@@ -14,16 +14,16 @@ namespace Business.Concrete
 {
     public class AuthManager : IAuthService
     {
-        private IUserService _userPService;
+        private IUserService _userService;
         private ITokenHelper _tokenHelper;
 
-        public AuthManager(IUserService userPService, ITokenHelper tokenHelper)
+        public AuthManager(IUserService userService, ITokenHelper tokenHelper)
         {
-            _userPService = userPService;
+            _userService = userService;
             _tokenHelper = tokenHelper;
         }
 
-        public IDataResult<User> Register(UserPForRegisterDto userForRegisterDto, string password)
+        public IDataResult<User> Register(UserForRegisterDto userForRegisterDto, string password)
         {
             byte[] passwordHash, passwordSalt;
             HashingHelper.CreatePasswordHacsh(password, out passwordHash, out passwordSalt);
@@ -36,13 +36,13 @@ namespace Business.Concrete
                 PasswordSalt = passwordSalt,
                 Status = true
             };
-            _userPService.Add(user);
+            _userService.Add(user);
             return new SuccessDataResult<User>(user, "kayıt oldu");
         }
 
-        public IDataResult<User> Login(UserPForLoginDto userForLoginDto)
+        public IDataResult<User> Login(UserForLoginDto userForLoginDto)
         {
-            var userToCheck = _userPService.GetByMail(userForLoginDto.Email);
+            var userToCheck = _userService.GetByMail(userForLoginDto.Email);
             if (userToCheck == null)
             {
                 return new ErrorDataResult<User>("kullanıcı bulunamadı");
@@ -58,7 +58,7 @@ namespace Business.Concrete
 
         public IResult UserExists(string email)
         {
-            if (_userPService.GetByMail(email) != null)
+            if (_userService.GetByMail(email) != null)
             {
                 return new ErrorResult("kullanıcı mevcut");
             }
@@ -67,7 +67,7 @@ namespace Business.Concrete
 
         public IDataResult<AccessToken> CreateAccessToken(User user)
         {
-            var claims = _userPService.GetClaims(user);
+            var claims = _userService.GetClaims(user);
             var accessToken = _tokenHelper.CreateToken(user, claims);
             return new SuccessDataResult<AccessToken>(accessToken, "asd");
         }
