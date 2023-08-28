@@ -38,8 +38,6 @@ namespace WebAPI
             //services.AddSingleton<IProductService, ProductManager>();
             //services.AddSingleton<IProductDal, EfProductDal>();
 
-           
-
             var tokenOptions = Configuration.GetSection("TokenOptions").Get<TokenOptions>();
            
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
