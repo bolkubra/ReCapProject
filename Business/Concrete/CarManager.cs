@@ -25,21 +25,7 @@ namespace Business.Concrete
         {
             _carDal = carDal;
         }
-        [SecuredOperation("car.add,admin")] // yetki kontorlü
-        [ValidationAspect(typeof(CarValidator))]
-        public IResult İnsert(Car car)
-        {
-            //business kod
-            //validation - doğrulama kod
-            //if (car.CarName.Length < 2) // min 2 karakter
-            //{
-            //    return new ErrorResult(Messages.CarNameInvalid);
-            //}
-            //ValidationTool.Validate(new CarValidator(), car);
-            
-            _carDal.Add(car);
-            return new SuccessResult(Messages.ProductAdded);
-        }
+      
 
         public IResult Delete(Car car)
         {
@@ -77,10 +63,13 @@ namespace Business.Concrete
         {
             return new SuccessDataResult<List<Car>>(_carDal.GetAll(c => c.ColorId == colorId), "Car ColorId:" + colorId + " provided!");
         }
-
+        //claim
+        [SecuredOperation("car.add,admin")] // yetki kontorlü
+        [ValidationAspect(typeof(CarValidator))]
         public IResult Insert(Car car)
         {
-            _carDal.Add(car);
+           
+                _carDal.Add(car);
             return new SuccessResult("Car inserted!");
         }
 

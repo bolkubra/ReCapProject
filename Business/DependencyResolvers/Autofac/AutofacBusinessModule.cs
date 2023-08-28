@@ -24,7 +24,7 @@ namespace Business.DependencyResolvers.Autofac
 
            
 
-            builder.RegisterType<UserPManager>().As<IUserService>();
+            builder.RegisterType<UserManager>().As<IUserService>();
             builder.RegisterType<EfUserDal>().As<IUserDal>();
 
             builder.RegisterType<AuthManager>().As<IAuthService>();

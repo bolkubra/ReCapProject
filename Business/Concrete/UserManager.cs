@@ -7,11 +7,11 @@ using System.Text;
 
 namespace Business.Concrete
 {
-    public class UserPManager : IUserService
+    public class UserManager : IUserService
     {
         IUserDal _userDal;
 
-        public UserPManager(IUserDal userDal)
+        public UserManager(IUserDal userDal)
         {
             _userDal = userDal;
         }
