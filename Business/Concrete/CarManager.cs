@@ -62,6 +62,7 @@ namespace Business.Concrete
             return new SuccessResult("güncellendi");
         }
 
+        [CacheAspect] // key,value
         public IDataResult<List<Car>> GetAll()
         {
             if (DateTime.Now.Hour == 00)
