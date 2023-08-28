@@ -2,6 +2,7 @@
 using Business.BusinessAspects.Autofac;
 using Business.Constanst;
 using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofact.Caching;
 using Core.Aspects.Autofact.Validation;
 using Core.CrossCuttingConcerns.Validation;
 using Core.Utilities.Businness;
@@ -29,7 +30,7 @@ namespace Business.Concrete
 
         [SecuredOperation("car.add,admin")]
         [ValidationAspect(typeof(CarValidator))]
-        //[CacheRemoveAspect("ICarService.Get")]
+        [CacheRemoveAspect("ICarService.Get")]
         //[TransactionScopeAspect] //>> Hata yönetimi
         //[PerformanceAspect(5)] //>> Bu metodun çalışması 5 sn geçerse beni uyar. Sadece bu metodu kontrol eder. Ama AspectInterceptorSelector içine yazılırsa tüm metodları kontrol eder.
         public IResult Insert(Car car)
@@ -73,6 +74,7 @@ namespace Business.Concrete
             return new SuccessDataResult<List<Car>>(_carDal.GetAll(), "listelendi");
         }
 
+        [CacheAspect]
         public IDataResult<Car> GetById(int carId)
         {
             return new SuccessDataResult<Car>(_carDal.Get(c => c.CarId== carId));
