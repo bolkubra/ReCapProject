@@ -3,6 +3,8 @@ using Business.BusinessAspects.Autofac;
 using Business.Constanst;
 using Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofact.Caching;
+using Core.Aspects.Autofact.Performance;
+using Core.Aspects.Autofact.Transaction;
 using Core.Aspects.Autofact.Validation;
 using Core.CrossCuttingConcerns.Validation;
 using Core.Utilities.Businness;
@@ -75,6 +77,7 @@ namespace Business.Concrete
         }
 
         [CacheAspect]
+        [PerformanceAspect(5)] // bu metodun çalışması 5snyi geçerse beni uyar
         public IDataResult<Car> GetById(int carId)
         {
             return new SuccessDataResult<Car>(_carDal.Get(c => c.CarId== carId));
@@ -93,7 +96,16 @@ namespace Business.Concrete
         {
             return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails());
         }
-
-       
+        [TransactionScopeAspect]
+        public IResult AddTransactionalTest(Car car)
+        {
+            Insert(car);
+            if (car.DailyPrice < 1000)
+            {
+                throw new Exception("");
+            }
+            Insert(car);
+            return null;
+        }
     }
 }
