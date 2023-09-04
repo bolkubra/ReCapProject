@@ -23,7 +23,7 @@ namespace Business.Concrete
 {
     public class CarManager : ICarService
     {
-        ICarDal _carDal;
+        private readonly ICarDal _carDal;
 
         public CarManager(ICarDal carDal)
         {
@@ -68,7 +68,7 @@ namespace Business.Concrete
         [CacheAspect] // key,value
         public IDataResult<List<Car>> GetAll()
         {
-            if (DateTime.Now.Hour == 00)
+            if (DateTime.Now.Hour == 7)
             {
                 return new ErrorDataResult<List<Car>>(Messages.MaintenanceTime);
             }
