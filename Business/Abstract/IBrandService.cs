@@ -9,13 +9,19 @@ using System.Text;
 namespace Business.Abstract
 {
     
-    public  interface IBrandService : IEntityService<Brand>
+    public  interface IBrandService
     {
-        IResult Add(Brand brand);
-        IResult Delete(Brand brand);
-        IResult Update(Brand brand);
+        //IResult Add(Brand brand);
+        //IResult Delete(Brand brand);
+        //IResult Update(Brand brand);
+        //IDataResult<Brand> GetById(int id);
+        //IDataResult<List<Brand>> GetAll(Expression<Func<Brand, bool>> filter = null);
+        //List<BrandDetailDto> GetBrandDetails();
+
+        IDataResult<List<Brand>> GetAll();
         IDataResult<Brand> GetById(int id);
-        IDataResult<List<Brand>> GetAll(Expression<Func<Brand, bool>> filter = null);
-        List<BrandDetailDto> GetBrandDetails();
+        IResult Add(Brand brand);
+        IResult Update(Brand brand);
+        IResult Delete(Brand brand);
     }
 }

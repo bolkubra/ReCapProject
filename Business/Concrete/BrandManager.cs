@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Business.Constanst;
 using Core.Entities;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
@@ -17,52 +18,37 @@ namespace Business.Concrete
 
         public BrandManager(IBrandDal brandDal)
         {
-           _brandDal = brandDal;
+            _brandDal = brandDal;
         }
 
         public IResult Add(Brand brand)
         {
-            throw new NotImplementedException();
+            _brandDal.Add(brand);
+            return new SuccessResult("Marka Eklendi");
         }
 
-        public IResult Delete(Brand entity)
+        public IResult Delete(Brand brand)
         {
-            _brandDal.Delete(entity);
-            return new SuccessResult("Brand deleted!");
-        }
-
-        
-
-        public IDataResult<List<Brand>> GetAll(Expression<Func<Brand, bool>> filter = null)
-        {
-            return new SuccessDataResult<List<Brand>>(_brandDal.GetAll(), "Brands Listed");
+            _brandDal.Delete(brand);
+            return new SuccessResult("Marka Bilgisi Silindi");
         }
 
         public IDataResult<List<Brand>> GetAll()
         {
-            throw new NotImplementedException();
-        }
-
-        public List<BrandDetailDto> GetBrandDetails()
-        {
-            throw new NotImplementedException();
+            var list = _brandDal.GetAll();
+            return new SuccessDataResult<List<Brand>>(list, "Markalar Listelendi");
         }
 
         public IDataResult<Brand> GetById(int id)
         {
-            return new SuccessDataResult<Brand>(_brandDal.Get(b => b.BrandId == id), "Brand brandId:" + id + " is provided!");
+            var data = _brandDal.Get(b => b.BrandId == id);
+            return new SuccessDataResult<Brand>(data);
         }
 
-        public IResult Insert(Brand entity)
+        public IResult Update(Brand brand)
         {
-            _brandDal.Add(entity);
-            return new SuccessResult("Brand deleted!");
-        }
-
-        public IResult Update(Brand entity)
-        {
-            _brandDal.Update(entity);
-            return new SuccessResult("Brand deleted!");
+            _brandDal.Update(brand);
+            return new SuccessResult("Marka Bilgisi Güncellendi");
         }
     }
 }

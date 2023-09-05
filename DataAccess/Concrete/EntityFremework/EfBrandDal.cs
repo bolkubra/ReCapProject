@@ -9,7 +9,7 @@ using System.Text;
 
 namespace DataAccess.Concrete.EntityFremework
 {
-    public class EfBrandDal : EfEntityRepositoryBase<Brand, ReCapProjectContext>
+    public class EfBrandDal : EfEntityRepositoryBase<Brand, ReCapProjectContext>,IBrandDal
     {
         //public void Add(Brand entity)
         //{
