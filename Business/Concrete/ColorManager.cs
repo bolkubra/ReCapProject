@@ -13,29 +13,41 @@ namespace Business.Concrete
 {
     public class ColorManager : IColorService
     {
+        private readonly IColorDal _colorDal;
+
+        public ColorManager(IColorDal colorDal)
+        {
+            _colorDal = colorDal;
+        }
+
         public IResult Delete(Color color)
         {
-            throw new NotImplementedException();
+            _colorDal.Delete(color);
+            return new SuccessResult("Renk Bilgisi Silindi");
         }
 
         public IDataResult<List<Color>> GetAll()
         {
-            throw new NotImplementedException();
+            var list = _colorDal.GetAll();
+            return new SuccessDataResult<List<Color>>(list, "REnkler Listelendi");
         }
 
         public IDataResult<Color> GetById(int id)
         {
-            throw new NotImplementedException();
+            var data = _colorDal.Get(c => c.ColorId == id);
+            return new SuccessDataResult<Color>(data);
         }
 
         public IResult Insert(Color color)
         {
-            throw new NotImplementedException();
+            _colorDal.Add(color);
+            return new SuccessResult("Renk Bilgisi Eklendi");
         }
 
         public IResult Update(Color color)
         {
-            throw new NotImplementedException();
+            _colorDal.Update(color);
+            return new SuccessResult("Renk Bilgisi Güncellendi");
         }
     }
 }
