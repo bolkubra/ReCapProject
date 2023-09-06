@@ -13,9 +13,12 @@ namespace Entities.DTOs
         public decimal DailyPrice { get; set; }
 
 
-        public override string ToString()
-        {
-            return CarName + " " + BrandName + " " + ColorName + " " + DailyPrice;
-        }
+        //public override string ToString()
+        //{
+        //    return CarName + " " + BrandName + " " + ColorName + " " + DailyPrice;
+        //}
+
+
+
     }
 }

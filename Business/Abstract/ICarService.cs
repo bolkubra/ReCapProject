@@ -8,16 +8,20 @@ using System.Text;
 
 namespace Business.Abstract
 {
-    public interface ICarService : IEntityService<Car>
+    public interface ICarService
     {
         IDataResult<List<Car>> GetAll();
         IDataResult<List<Car>> GetCarsByBrandId(int brandId);
         IDataResult<List<Car>> GetCarsByColorId(int colorId);
-        
-        IResult Delete(Car car);
-        IResult Update(Car car);
         IDataResult<Car> GetById(int carId);
         IDataResult<List<CarDetailDto>> GetCarDetails();
+        //IDataResult<List<Car>> GetCarDetailsByColorNameAndBrandName(string colorName, string brandName);
+
+        IResult Delete(Car car);
+        IResult Update(Car car);
+        IResult Insert(Car car);
+
+
 
         IResult AddTransactionalTest(Car car); // uygulamalarda tutarsızlıkları korumak adına yapılan bir yöntem
 
@@ -25,6 +29,6 @@ namespace Business.Abstract
 
 
 
-        //List<CarDetailDto> GetCarDetails();
+     
     }
 }

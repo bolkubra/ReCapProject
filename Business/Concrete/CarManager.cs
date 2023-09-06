@@ -15,6 +15,8 @@ using Entities.DTOs;
 using FluentValidation;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Linq;
 using System.Linq.Expressions;
 using System.Runtime.ConstrainedExecution;
 using System.Text;
@@ -107,5 +109,10 @@ namespace Business.Concrete
             Insert(car);
             return null;
         }
+
+        //public IDataResult<List<Car>> GetCarDetailsByColorNameAndBrandName(string colorName, string brandName)
+        //{
+        //    return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetailsByColorNameAndBrandName(colorName,brandName));
+        //}
     }
 }
