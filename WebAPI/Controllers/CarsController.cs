@@ -1,10 +1,12 @@
 ﻿using Business.Abstract;
 using Business.Concrete;
+using Core.Utilities.Results;
 using DataAccess.Concrete.EntityFremework;
 using Entities.Concrete;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 
 namespace WebAPI.Controllers
@@ -113,6 +115,8 @@ namespace WebAPI.Controllers
                 return Ok(result);
             }
             return BadRequest(result);
+
+
         }
 
         
