@@ -60,6 +60,7 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
+
         [HttpPost("insert")]
         public IActionResult Insert(Car car)
         {
@@ -82,7 +83,7 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-        [HttpGet("getcarsbybrandid")]
+        [HttpGet("getbybrandid")]
         public IActionResult GetCarsByBrandId(int brandId)
         {
             var result = _carService.GetCarsByBrandId(brandId);

@@ -25,10 +25,10 @@ namespace Business.Abstract
 
         IResult AddTransactionalTest(Car car); // uygulamalarda tutarsızlıkları korumak adına yapılan bir yöntem
 
+       
 
 
 
 
-     
     }
 }

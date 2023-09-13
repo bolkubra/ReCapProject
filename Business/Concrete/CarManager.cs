@@ -110,6 +110,8 @@ namespace Business.Concrete
             return null;
         }
 
+       
+
         //public IDataResult<List<Car>> GetCarDetailsByColorNameAndBrandName(string colorName, string brandName)
         //{
         //    return new SuccessDataResult<List<Car>>(_carDal.GetAll(c => c.ColorName == colorName , b => b.BrandName == brandName));
