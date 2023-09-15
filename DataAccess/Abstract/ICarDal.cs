@@ -19,7 +19,8 @@ namespace DataAccess.Abtract
 
         List<CarDetailDto> GetCarDetails();
         List<CarDetailDto> GetCarsByBrand(int id);
-      
+        List<CarDetailDto> GetCarsByColor(int id);
+                
 
     }
 }

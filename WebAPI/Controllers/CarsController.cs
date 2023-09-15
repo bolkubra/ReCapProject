@@ -94,11 +94,10 @@ namespace WebAPI.Controllers
             }
             return BadRequest(result);
         }
-
-        [HttpGet("getcarsbycolorid")]
-        public IActionResult GetCarsByColorId(int colorId)
+        [HttpGet("getbycolorid")]
+        public IActionResult GetCarsByColor(int colorId)
         {
-            var result = _carService.GetCarsByColorId(colorId);
+            var result = _carService.GetCarsByColor(colorId);
 
             if (result.Success)
             {
@@ -106,6 +105,8 @@ namespace WebAPI.Controllers
             }
             return BadRequest(result);
         }
+       
+        
         [HttpGet("getcardetails")]
         public IActionResult GetCarDetails()
         {
