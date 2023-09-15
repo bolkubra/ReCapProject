@@ -17,25 +17,6 @@ namespace DataAccess.Concrete.EntityFremework
         public List<CarDetailDto> GetCarDetails()
         {
 
-            //using (ReCapProjectContext context = new ReCapProjectContext())
-            //{
-
-            //    var result = from c in context.Cars
-            //                 join b in context.Brands
-            //                 on c.BrandId equals b.BrandId
-            //                 join co in context.Colors
-            //                 on c.ColorId equals co.ColorId
-            //                 select new CarDetailDto()
-            //                 {
-            //                     CarName = c.CarName,
-            //                     BrandName = b.BrandName,
-            //                     ColorName = co.ColorName,
-            //                     DailyPrice = c.DailyPrice
-            //                 };
-            //    return result.ToList();
-
-
-            //}
 
             using (ReCapProjectContext context = new ReCapProjectContext())
             {
@@ -59,7 +40,31 @@ namespace DataAccess.Concrete.EntityFremework
 
         }
 
-        
+        public List<CarDetailDto> GetCarsByBrand(int brandId)
+        {
+            using (ReCapProjectContext context = new ReCapProjectContext())
+            {
+                var result = from car in context.Cars
+                             join color in context.Colors on car.ColorId equals color.ColorId
+                             join brand in context.Brands on car.BrandId equals brand.BrandId
+                             where brand.BrandId == brandId
+                             select new CarDetailDto()
+                             {
+                                 CarId = car.CarId,
+                                 CarName = car.CarName,
+                                 ColorName = color.ColorName,
+                                 BrandName = brand.BrandName,
+                                 DailyPrice = car.DailyPrice,
+                                 Description = car.Description,
+                                 ModelYear = car.ModelYear
+
+                             };
+                return result.ToList();
+            }
+
+        }
+
+       
 
     }
 

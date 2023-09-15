@@ -13,7 +13,7 @@ namespace WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CarsController : ControllerBase , IEntityControllerBase<Car>
+    public class CarsController : ControllerBase, IEntityControllerBase<Car>
     {
 
 
@@ -84,9 +84,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("getbybrandid")]
-        public IActionResult GetCarsByBrandId(int brandId)
+        public IActionResult GetCarsByBrand(int brandId)
         {
-            var result = _carService.GetCarsByBrandId(brandId);
+            var result = _carService.GetCarsByBrand(brandId);
 
             if (result.Success)
             {
@@ -120,6 +120,5 @@ namespace WebAPI.Controllers
 
         }
 
-        
     }
 }
