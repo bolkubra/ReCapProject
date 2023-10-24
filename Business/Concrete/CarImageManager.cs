@@ -54,6 +54,7 @@ namespace Business.Concrete
             {
                 return new ErrorDataResult<List<CarImage>>(GetDefaultImage(carId).Data);
             }
+
             return new SuccessDataResult<List<CarImage>>(_carImageDal.GetAll(c => c.CarId == carId));
         }
 
