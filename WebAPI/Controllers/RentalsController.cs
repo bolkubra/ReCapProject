@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using Entities.Concrete;
 using Microsoft.AspNetCore.Mvc;
+using System;
 
 namespace WebAPI.Controllers
 {
@@ -64,6 +65,18 @@ namespace WebAPI.Controllers
             }
             return BadRequest(result);
         }
+
+        [HttpGet("getissuitable")]
+        public IActionResult GetIsSuitable(int rentId, DateTime startDate, DateTime endDate)
+        {  
+            var result = _rentalService.IsSuitableToRent(rentId, startDate, endDate);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
     }
 }
 
