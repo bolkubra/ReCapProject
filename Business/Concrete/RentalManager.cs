@@ -42,20 +42,33 @@ namespace Business.Concrete
             return new SuccessResult("Kiralama Bilgisi Eklendi");
         }
 
-        public IResult IsSuitableToRent(int rentid, DateTime startDate , DateTime endDate)
+        public IResult IsSuitableToRent(int rentid, DateTime startDate, DateTime endDate)
         {
-            Rental rental = _rentalDal.Get(r => r.RentalId == rentid);
-            if (startDate >= rental.RentStartDate && startDate < rental.RentEndDate
-            || endDate > rental.RentStartDate && endDate <= rental.RentEndDate
-            || startDate <= rental.RentStartDate && endDate >= rental.RentEndDate)
+            var rentals = _rentalDal.GetAll(r => r.CarId == rentid);
+
+            if (rentals != null)
             {
-                // Rezervasyon mevcut, oda dolu
-                return new ErrorResult("Kiralama işlemine uygun değil");
+                foreach (var rental in rentals)
+                {
+                    if (startDate >= rental.RentStartDate && startDate < rental.RentEndDate
+           || endDate > rental.RentStartDate && endDate <= rental.RentEndDate
+           || startDate <= rental.RentStartDate && endDate >= rental.RentEndDate)
+                    {
+                        // Rezervasyon mevcut, oda dolu
+                        return new ErrorResult("Kiralama işlemine uygun değil");
+                    }
+                }
+
+
+                return new SuccessResult("Kiralamaya Uygun");
+
             }
             else
             {
-                return new SuccessResult("Kiralamaya Uygun");
+                return new ErrorResult("Kiralama işlemine uygun değildir");
             }
+
+
         }
 
         public IResult Update(Rental rental)
