@@ -10,8 +10,8 @@ namespace Entities.Concrete
         public int RentalId { get; set; }
         public int CarId { get; set; }
         public int CustomerId { get; set; }
-        public DateTime RentStartDate { get; set; }
-        public DateTime RentEndDate { get; set; }
+        public DateTime? RentStartDate { get; set; } = null;
+        public DateTime? RentEndDate { get; set; } = null;
         public DateTime? ReturnDate { get; set; } = null;
     }
 }
