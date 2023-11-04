@@ -8,7 +8,7 @@ namespace Business.ValidationRules.FluentValidation
 {
     public class CarValidator : AbstractValidator<Car>
     {
-        public CarValidator()
+        public CarValidator() // bizim eklediğimiz kurallar
         {
             RuleFor(p => p.CarName).NotEmpty();//boş geçilemez
             RuleFor(p => p.CarName).MinimumLength(2);
