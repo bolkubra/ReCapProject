@@ -11,6 +11,7 @@ namespace DataAccess.Concrete.EntityFremework
 {
     public class EfBrandDal : EfEntityRepositoryBase<Brand, ReCapProjectContext>,IBrandDal
     {
+        
         //public void Add(Brand entity)
         //{
         //    throw new NotImplementedException();

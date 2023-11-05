@@ -1,7 +1,13 @@
 ﻿using Business.Abstract;
+using DataAccess.Concrete.EntityFremework;
 using Entities.Concrete;
+using Entities.DTOs;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System.Linq;
 using System.Threading;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
+using static System.Net.WebRequestMethods;
 
 namespace WebAPI.Controllers
 {
@@ -55,7 +61,7 @@ namespace WebAPI.Controllers
             }
             return BadRequest(result);
         }
-        [HttpPost("update")]
+        [HttpPut("update")]
         public IActionResult Update(Brand brand)
         {
             var result = _brandService.Update(brand);
@@ -65,5 +71,13 @@ namespace WebAPI.Controllers
             }
             return BadRequest(result);
         }
+
+
+
+
+
+
+
+
     }
 }
