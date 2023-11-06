@@ -46,6 +46,28 @@ namespace WebAPI.Controllers
             }
             return BadRequest(result);
         }
-    
+
+        [HttpPost("delete")]
+        public IActionResult Delete(Color entity)
+        {
+            var result = _colorservice.Delete(entity);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+
+        }
+
+        [HttpPut("update")]
+        public IActionResult Update(Color color)
+        {
+            var result = _colorservice.Update(color);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
     }
 }
