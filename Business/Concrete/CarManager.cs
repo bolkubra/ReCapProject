@@ -73,7 +73,9 @@ namespace Business.Concrete
             if (DateTime.Now.Hour == 7)
             {
                 return new ErrorDataResult<List<Car>>(Messages.MaintenanceTime);
+
             }
+           
 
             return new SuccessDataResult<List<Car>>(_carDal.GetAll(), "listelendi");
         }
@@ -96,8 +98,17 @@ namespace Business.Concrete
         }
         public IDataResult<List<CarDetailDto>> GetCarDetails()
         {
-            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails());
+            var result = _carDal.GetCarDetails();
+            foreach (var item in result)
+            {
+                if (item.CarImage == null)
+                {
+                    item.CarImage = "default.jpg";
+                }
+            }
+            return new SuccessDataResult<List<CarDetailDto>>(result);
         }
+
         public IDataResult<List<CarDetailDto>> GetCarDetailsByCarId(int carId)
         {
             return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetailsByCarId(carId));

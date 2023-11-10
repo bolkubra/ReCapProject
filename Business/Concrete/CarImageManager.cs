@@ -80,7 +80,7 @@ namespace Business.Concrete
         {
 
             List<CarImage> carImage = new List<CarImage>();
-            carImage.Add(new CarImage { CarId = carId, Date = DateTime.Now, ImagePath = "DefaultImage.jpg" });
+            carImage.Add(new CarImage { CarId = carId, Date = DateTime.Now, ImagePath = "default.jpg" });
             return new SuccessDataResult<List<CarImage>>(carImage);
         }
         private IResult CheckCarImage(int carId)
