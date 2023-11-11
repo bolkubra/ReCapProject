@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Core.Utilities.Security.Hashing;
+using Castle.DynamicProxy.Generators.Emitters;
 
 namespace Business.Concrete
 {
@@ -70,6 +71,12 @@ namespace Business.Concrete
             var claims = _userService.GetClaims(user);
             var accessToken = _tokenHelper.CreateToken(user, claims);
             return new SuccessDataResult<AccessToken>(accessToken, "asd");
+        }
+
+        public IDataResult<string> GetUserName(string email)
+        {
+            var findUser = _userService.GetByMail(email);
+            return new SuccessDataResult<string> (findUser.FirstName+ " " + findUser.LastName);
         }
     }
 }

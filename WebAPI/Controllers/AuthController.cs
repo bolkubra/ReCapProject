@@ -32,6 +32,15 @@ namespace WebAPI.Controllers
             return BadRequest(result.Message);
         }
 
+        [HttpGet("findusername")]
+        public ActionResult FindUserName(string email )
+        {
+           var findEmail = _authService.GetUserName(email);
+           return Ok(findEmail);
+
+           
+        }
+
         [HttpPost("register")]
         public ActionResult Register(UserForRegisterDto userForRegisterDto)
         {

@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using Core.DataAccess.EntityFramework;
 using Core.Entities.Concrete;
 using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFremework;
 using Entities.Concrete;
+using Entities.DTOs;
 
 namespace DataAccess.Concrete.EntityFramework
 {
@@ -23,6 +25,24 @@ namespace DataAccess.Concrete.EntityFramework
                              select new OperationClaim { Id = operationClaim.Id, Name = operationClaim.Name };
                 return result.ToList();
 
+            }
+        }
+
+        public List<UserDto> GetUsersDtos(Expression<Func<UserDto, bool>> filter = null)
+        {
+            using (var context = new ReCapProjectContext())
+            {
+                var result = from user in context.Users
+                             select new UserDto
+                             {
+                                 Id = user.Id,
+                                 Email = user.Email,
+                                 FirstName = user.FirstName,
+                                 LastName = user.LastName
+                             };
+                return filter == null
+                    ? result.ToList()
+                    : result.Where(filter).ToList();
             }
         }
     }
